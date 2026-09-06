@@ -3,18 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#EFEEEA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000">
 <title>Erik An</title>
 <meta name="description" content="Erik An — Mathematics and Data Science, University of Vienna. Brain-computer interfaces, computational neuroscience, and signal processing.">
 <meta name="author" content="Erik An">
 
-<!-- Open Graph -->
 <meta property="og:title" content="Erik An">
 <meta property="og:description" content="Mathematics and Data Science, University of Vienna. Brain-computer interfaces, computational neuroscience, and signal processing.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://erik-an.com">
-<!-- TODO: add an og:image (1200x630) so link previews aren't bare, and a favicon -->
+<meta property="og:url" content="https://erik-an.com/">
+<meta property="og:image" content="https://erik-an.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Erik An — Mathematics and Data Science, University of Vienna">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,29 +28,19 @@
 
 <style>
   /* Palette: black #000000, white #EFEEEA, orange #FE7743, blue #273F4F.
-     Dark is the default; light mode is the same four values inverted.
-     Blue is unreadable as text on black (1.9:1), so on dark it does
-     structural work only — rules and hairlines. Orange carries the accent:
-     links are undecorated and signal only on hover and focus. */
+     Dark only on screen; the CV's print stylesheet forces light on its own.
+     Blue is unreadable as text on black (1.9:1), so it does structural work
+     only — rules and hairlines, darkened from #273F4F so a 1px rule reads as
+     a hairline rather than a line. Orange carries the accent: links are
+     undecorated and signal only on hover and focus. */
   :root {
-    color-scheme: dark light;
+    color-scheme: dark;
     --bg: #000000;
     --text: #EFEEEA;
     --text-muted: #8C8B87;
-    --rule: #273F4F;
+    --rule: #1B2B36;
     --accent: #FE7743;
     --selection-bg: rgba(254, 119, 67, 0.28);
-  }
-
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #EFEEEA;
-      --text: #000000;
-      --text-muted: #273F4F;
-      --rule: rgba(39, 63, 79, 0.28);
-      --accent: #FE7743;
-      --selection-bg: rgba(254, 119, 67, 0.30);
-    }
   }
 
   ::selection {
@@ -74,7 +70,7 @@
   header {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
-    border-bottom: 0.5px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
   }
 
   h1 {
@@ -118,15 +114,19 @@
   }
 
   .entries li {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   .entries li:last-child {
     margin-bottom: 0;
   }
 
+  /* The slug is the entry's heading and has to win the eye: full contrast,
+     set up against a description that stays muted and a step smaller. */
   .entry-name {
     font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--text);
   }
 
   .entry-meta {
@@ -136,8 +136,9 @@
 
   .entry-desc {
     color: var(--text-muted);
-    font-size: 0.95rem;
-    margin: 0.15rem 0 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin: 0.2rem 0 0;
   }
 
   .links li {
@@ -159,6 +160,14 @@
     outline-offset: 3px;
   }
 
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
 </style>
 </head>
 <body>
@@ -178,7 +187,7 @@
     <h2>ongoing</h2>
     <ul>
       <li>
-        <span class="entry-name"><a href="https://github.com/erikandmitrievich/mfds">mfds</a></span>
+        <span class="entry-name"><a href="https://github.com/erikandmitrievich/mfds">mfds</a></span> &middot; <span class="entry-meta">executable knowledge base</span>
         <p class="entry-desc">Study repository for my BSc. Emacs and Org-mode throughout, Python and Julia for tooling and coursework; lecture notes, problem sets and exam preparation in LaTeX. The directory layout is a written spec with a validator, run as a pre-commit hook; sources and generated products are strictly separated. LLMs through the API handle extraction and aggregation at volume, never the mathematics.</p>
       </li>
     </ul>
@@ -189,31 +198,19 @@
     <ul>
 
       <li>
-        <span class="entry-name"><a href="https://github.com/erikandmitrievich/total_perspective_vortex">total_perspective_vortex</a></span>
-        <p class="entry-desc">Motor-imagery classification over PhysioNet's EEGMMIDB. Common Spatial Patterns written from scratch as a scikit-learn transformer, feeding LDA; the derivation sits beside the implementation, and the features are checked against mne.decoding.CSP. 0.63 mean held-out accuracy over 109 subjects and six binary task groups.</p>
+        <span class="entry-name"><a href="https://github.com/erikandmitrievich/total_perspective_vortex">total_perspective_vortex</a></span> &middot; <span class="entry-meta">EEG motor-imagery classification</span>
+        <p class="entry-desc">Motor-imagery classification over PhysioNet's EEGMMIDB. Common Spatial Patterns written from scratch as a scikit-learn transformer, feeding LDA; 0.63 mean held-out accuracy over 109 subjects and six binary task groups. The derivation sits beside the implementation, and the filters it produces are checked against mne.decoding.CSP.</p>
       </li>
 
       <li>
-        <span class="entry-name"><a href="https://github.com/erikandmitrievich/transcendence">transcendence</a></span>
-        <p class="entry-desc">A browser Pong platform: local play, tournaments, and an AI opponent constrained to see the board once per second, so it predicts where the ball will arrive instead of following it. Full stack, TypeScript throughout; Fastify microservices behind a hand-written SPA with no frontend framework. Team of three, final project of the 42 Common Core.</p>
+        <span class="entry-name"><a href="https://github.com/erikandmitrievich/AudioPrint">AudioPrint</a></span> &middot; <span class="entry-meta">audio fingerprinting in Julia</span>
+        <p class="entry-desc">A Shazam-style audio identification engine — spectrogram analysis, spectral peak extraction, and combinatorial hashing matched against a SQLite fingerprint database. 97.8% identification on 138 noisy clips against an 8,000-song database, ~260&nbsp;ms per query.</p>
       </li>
 
-      <!-- Removed per TODO. Restore by uncommenting.
       <li>
-        <span class="entry-name"><a href="https://github.com/erikandmitrievich/AudioPrint">AudioPrint</a></span>
-        <p class="entry-desc">A Shazam-style audio identification engine — spectrogram
-        analysis, spectral peak extraction, and combinatorial hashing matched against a
-        SQLite fingerprint database. 97.8% identification on 138 noisy clips against an
-        8,000-song database, ~260&nbsp;ms per query.</p>
+        <span class="entry-name"><a href="https://github.com/erikandmitrievich/transcendence">transcendence</a></span> &middot; <span class="entry-meta">browser game platform, team of three</span>
+        <p class="entry-desc">Final project of the 42 Common Core and the largest of them: a browser Pong platform with local play, tournaments, and an AI opponent allowed one look at the board per second, so it has to predict where the ball will arrive rather than follow it. Built by a team of three, split into independent services so the three of us could work without blocking each other.</p>
       </li>
-      <li>
-        <span class="entry-name"><a href="https://github.com/erikandmitrievich/DCT">DCT</a></span>
-        <p class="entry-desc">The JPEG compression pipeline implemented from the raw
-        mathematics — manual 1D DCT summation extended to a separable 2D transform,
-        block processing, quantization, and inverse reconstruction. Self-directed, to
-        internalize the DCT covered in Linear Algebra.</p>
-      </li>
-      -->
 
     </ul>
   </section>
@@ -222,10 +219,15 @@
     <h2>elsewhere</h2>
     <ul>
       <li><a href="https://github.com/erikandmitrievich">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/erik-an/">LinkedIn</a></li>
       <li><a href="cv.html">CV</a></li>
       <li><a href="mailto:erikandmitrievich@gmail.com">Email</a></li>
     </ul>
   </section>
+
+  <footer>
+    Last updated September 2026
+  </footer>
 
 </main>
 
